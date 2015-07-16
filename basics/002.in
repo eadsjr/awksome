@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#cat tmp | awk '{if($1=="cat")if(count<5){count=count+1 ; print(count); system($0)}}'
+#cat tmp | awk '{if($1=="cat"){count=0;begin=1}else{count=$1;begin=2};if(count<5)if($begin=="cat"){ count=$1+1; print(count); system((count " " $0)) }}'
+cat tmp | awk '{if($1=="cat"){count=0;begin=1}else{count=$1;begin=2};if(count<5)if($begin=="cat"){ count=$1+1; print(count); system(("echo \"" count " " $0 "\"")"|"$0) }}'
